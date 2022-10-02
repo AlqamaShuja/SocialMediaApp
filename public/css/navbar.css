@@ -1,0 +1,108 @@
+:root {
+    --navColor: rgb(17, 13, 13);
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    height: 3.5rem;
+    background-color: rgb(58, 55, 55);
+    box-sizing: border-box;
+}
+
+.logo {
+    color: #fff;
+    font-size: 1.4rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 16px;
+    cursor: pointer;
+}
+
+.nav-lists {
+    display: flex;
+    /* margin-right: 4rem; */
+    margin-top: 0;
+    list-style: none;
+    height: 100%;
+    /* box-sizing: border-box; */
+}
+
+.nav-list-item {
+    /* background-color: rgb(39, 37, 37); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    height: 100%;
+    width: 10rem;
+}
+
+.nav-list-item a {
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: #fff;
+    margin: 5px 20px;
+}
+
+.nav-list-item:hover {
+    background-color: rgb(1, 0, 0);
+}
+
+.active {
+    background-color: rgb(1, 0, 0);
+}
+
+.user-name {
+    /* margin-top: 5px; */
+    font-size: 1.3rem;
+    color: #fff;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    /* position: relative; */
+    /* top: 1.5rem; */
+}
+
+.dropMenu {
+    position: absolute;
+    top: 3.5rem;
+    /* height: 7rem; */
+    padding: 14px 6px;
+    background-color: rgb(41, 40, 40);
+    color: #fff;
+    display: none;
+    width: 9.3rem;
+}
+
+.dropMenu a {
+    font-size: 1rem;
+}
+
+.deleteAccount {
+    top: 7rem;
+}
+
+.logout {
+    top: 10.5rem;
+}
+
+.logoutAll {
+    top: 13.8rem;
+}
+
+
+.user-name:hover .dropMenu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dropMenu:hover {
+    background-color: var(--navColor);
+}
+
+/* Tooltip --> showing EMAIL */

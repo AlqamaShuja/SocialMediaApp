@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/form.css">
+    <title>Update Your Profile</title>
+</head>
+
+<body>
+    {{>header}}
+    {{!-- enctype="application/x-www-form-urlencoded" --}}
+    <form action="/users/me?_method=PATCH" method="post" _method="Patch">
+        {{!-- <input type="hidden" name="_id" value="{{id}}"> --}}
+        <div class="inputBox">
+            <label for="name">Name</label>
+            <input type="text" id="name" class="input" name="name" value="{{name}}">
+        </div>
+        <div class="inputBox">
+            <label for="email">Email</label>
+            <input type="text" id="email" class="input" name="email" value="{{email}}">
+        </div>
+        <div class="inputBox">
+            <label for="password">Password</label>
+            <input type="password" id="password" class="input" name="password">
+        </div>
+        <div class="inputBox">
+            <label>Gender &nbsp;</label>
+            <input type="radio" id="male" class="input" name="gender" value="1">
+            <label for="male">Male</label>
+            <input type="radio" id="female" class="input" name="gender" value="-1">
+            <label for="female">Female</label>
+        </div>
+        <input type="submit" value="Update">
+    </form>
+</body>
+
+</html>

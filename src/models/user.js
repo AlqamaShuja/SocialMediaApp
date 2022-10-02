@@ -19,8 +19,8 @@ const userSchema = new mongoose.Schema({
         trim: true,
         minLength: 3,
         maxLength: 40,
-        validate(value){
-            if(!validator.isEmail(value)){
+        validate(value) {
+            if (!validator.isEmail(value)) {
                 throw new Error("Email is Invalid");
             }
         }
@@ -33,15 +33,15 @@ const userSchema = new mongoose.Schema({
     gender: {
         type: Number,
         required: true,
-        validate(val){
-            if(![0, 1, -1].includes(val)){
+        validate(val) {
+            if (![0, 1, -1].includes(val)) {
                 throw new Error("Gender must be selected");
             }
         }
     },
     tokens: [{
         token: {
-            type:mongoose.Schema.Types.ObjectId,
+            type: String,
             required: true
         }
     }],
@@ -51,17 +51,15 @@ const userSchema = new mongoose.Schema({
 
 
 
-userSchema.methods.generateAuthToken = async function(){
+userSchema.methods.generateAuthToken = async function () {
     const user = this;
-    console.log(user);
-    const token = await jwt.sign({ _id: user._id.toString() }, process.env.JWT_AUTH_STRING);
-    console.log(token);
+    const token = jwt.sign({ _id: user._id.toString() }, process.env.JWT_SECRET);
     user.tokens = user.tokens.concat({ token });
     await user.save();
     return token;
 }
 
-userSchema.methods.toJSON = function(){
+userSchema.methods.toJSON = function () {
     const user = this;
     const userObject = user.toObject();
     delete userObject.password;
@@ -71,19 +69,19 @@ userSchema.methods.toJSON = function(){
 
 userSchema.statics.findByCredentials = async (email, password) => {
     const user = await User.findOne({ email });
-    if(!user){
+    if (!user) {
         throw new Error("User not found");
     }
     const isPasswordValid = await bcrypt.compare(password, user.password);
-    if(!isPasswordValid){
+    if (!isPasswordValid) {
         throw new Error("Credentials does not match");
     }
     return user;
 }
 
-userSchema.pre("save", async function(next){
+userSchema.pre("save", async function (next) {
     const user = this;
-    if(user.isModified("password")){
+    if (user.isModified("password")) {
         user.password = await bcrypt.hash(user.password, 8);
     }
     next();

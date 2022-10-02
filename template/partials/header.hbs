@@ -1,0 +1,26 @@
+<link rel="stylesheet" type="text/css" href="/css/navbar.css">
+<header>
+    <nav class="nav">
+        <div class="logo">LOGO</div>
+        <ul class="nav-lists">
+            <li class="nav-list-item active"><a href="#">Home</a></li>
+            <li class="nav-list-item"><a href="#">Find Friend</a></li>
+            <li class="nav-list-item user-name">
+                <a href="/users/me">{{name}}</a>
+                <div class="dropMenu">
+                    <a href="/users/update">Update Info</a>
+                </div>
+                <div class="dropMenu deleteAccount">
+                    <a href="/users/delete">Delete Account</a>
+                </div>
+                <div class="dropMenu logout">
+                    <a href="/users/logout">Logout</a>
+                </div>
+                <div class="dropMenu logoutAll">
+                    <a href="/users/logoutAll">Logout All</a>
+                </div>
+            </li>
+            {{!-- <li class="nav-lists-item"></li> --}}
+        </ul>
+    </nav>
+</header>
