@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/form.css">
+    <title>User Login</title>
+</head>
+
+<body>
+    
+    <form action="/users" method="post" class="form-login">
+        {{!-- {{#if error}} --}}
+        <div class="message error-message"><p>{{error}}</p></div>
+        {{!-- {{/if}} --}}
+        {{#if message}}
+        <div class="message success-message">{{message}}</div>
+        {{/if}}
+        <div class="form-div"><h1 class="user-login-text">SignUp User</h1></div>
+        <div class="form-div">
+            <input type="text" name="name" autofocus required class="inputBox" placeholder="Enter Name">
+        </div>
+        <div class="form-div">
+            <input type="email" name="email" required class="inputBox" placeholder="Enter email">
+        </div>
+        <div class="form-div">
+            <input type="password" name="password" required class="inputBox" placeholder="Password">
+        </div>
+        <div class="form-div">
+            {{!-- <label for="gender">Gender</label> --}}
+            <select name="gender" id="gender" required class="genderBox">
+                <option class="gender_opt">Select Gender</option>
+                <option class="gender_opt" style="margin: 5px;" value="1">Male</option>
+                <option class="gender_opt" style="font-family: 'Icons', 'Roboto', sans-serif;" value="-1">Female</option>
+                <option class="gender_opt" value="0">Other</option>
+            </select>
+        </div>
+        <div class="form-div">
+        <button type="submit" class="submitBtn">Login</button>
+        </div>
+    </form>
+</body>
+
+</html>

@@ -1,4 +1,150 @@
+:root {
+    --btnPrimaryColor: rgb(62, 59, 59);
+    --btnFontColor: rgb(255, 255, 255);
+    --btnPrimaryHoverColor: rgb(11, 11, 11);
+}
+
 body {
     margin: 0;
     padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.message {
+    width: 30%;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.error-message p {
+    background-color: rgb(237, 136, 136);
+}
+
+.success-message p {
+    background-color: rgb(92, 173, 109);
+}
+
+
+.form-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.form-div {
+    width: 50%;
+    display: flex;
+    justify-content: center; 
+    /* border: 2px solid black; */
+}
+
+.user-login-text {
+    color: var(--btnPrimaryColor);
+}
+
+.inputBox {
+    width: 100%;
+    border: 2px solid rgb(74, 74, 74);
+    outline: 0;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 6px auto;
+}
+
+.inputBox:active, .inputBox:focus {
+    box-shadow: 0 0 3px 1px var(--btnPrimaryHoverColor);
+}
+
+.submitBtn {
+    width: 74%;
+    padding: 10px;
+    background-color: var(--btnPrimaryColor);
+    font-size: 1.2rem;
+    color: var(--btnFontColor);
+    border: 2px solid black;
+    border-radius: 5px;
+    outline: 0;
+    margin: 6px auto;
+  
+    /* display: flex;
+    justify-content: center; */
+}
+
+.submitBtn:hover {
+    background-color: var(--btnPrimaryHoverColor);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* .btnDiv {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+} */
+
+/* .gender-div {
+    margin: 6px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+.genderBox {
+    border-radius: 5px;
+    width: 100%;
+    padding: 10px;
+    margin: 6px auto;
+    border: 2px solid rgb(74, 74, 74);
+}
+select.decorated option:hover {
+    background-color: rgb(36, 35, 35);
+    color: #fff;
+}
+
+@media screen and (max-width: 374px) {
+    .user-login-text {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    .message {
+        width: 90%;
+    }
+    .submitBtn {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .genderBox, .inputBox {
+        width: 70%;
+    }
+    .message {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 375px) and (max-width: 768px) {
+    .submitBtn {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .inputBox {
+        width: 50%;
+    }
+    .genderBox {
+        width: 55%;
+    }
+    .submitBtn {
+        width: 55%;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .genderBox {
+        width: 74%;
+    }
 }

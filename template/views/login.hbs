@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/css/form.css">
     <title>User Login</title>
 </head>
 
@@ -13,20 +13,19 @@
     {{#if error}}
     <div class="alert alert-danger">{{error}}</div>
     {{/if}}
-    <form action="/users/login" method="post">
-        <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                placeholder="Enter email">
-            {{!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
-                else.</small> --}}
+    <form action="/users/login" method="post" class="form-login">
+        <div class="form-div"><h1 class="user-login-text">Login User</h1></div>
+        <div class="form-div">
+            {{!-- <label for="emailLogin">Email address</label> --}}
+            <input type="email" name="email" autofocus class="inputBox email" id="emailLogin" placeholder="Enter email">
         </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" name="password" class="form-control" id="exampleInputPassword1"
-                placeholder="Password">
+        <div class="form-div">
+            {{!-- <label for="passwordLogin">Password</label> --}}
+            <input type="password" name="password" class="inputBox password" id="passwordLogin" placeholder="Password">
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="form-div">
+            <button type="submit" class="submitBtn">Login</button>
+        </div>
     </form>
 </body>
 

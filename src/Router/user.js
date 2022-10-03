@@ -17,16 +17,28 @@ route.post("/users", async (req, res) => {
     try {
         const user = new User(req.body);
         await user.save();
-        res.status(201).send(user);
+        res.render("signUp", {
+            message: "Account has been created"
+        });
+        // res.status(201).send(user);
     } catch (error) {
         // res.send({ error: "Something went wrong, please provide valid details" });
         if ((error.keyPattern && error.keyPattern.email == 1) && (error.keyValue && error.keyValue.email !== "")) {
-            return res.status(400).send({ error: "Email Already exists" });
+            // return res.status(400).send({ error: "Email Already exists" });
+            return res.render("signUp", {
+                error
+            });
         }
         else if (error._message) {
-            return res.status(400).send({ error: error._message })
+            // return res.status(400).send({ error: error._message });
+            return res.render("signUp", {
+                error
+            });
         }
-        res.send(error);
+        // res.send(error);
+        res.render("signUp", {
+            error
+        });
     }
 });
 
@@ -83,6 +95,11 @@ route.get("/users/logoutAll", auth, (req, res) => {
 
 
 // HBS
+
+route.get("/users/signup", (req, res) => {
+    res.render("signUp"); 
+})
+
 route.get("/users/login", (req, res) => {
     res.render("login");
 });
