@@ -1,4 +1,5 @@
 <link rel="stylesheet" type="text/css" href="/css/navbar.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <header>
     <nav class="nav">
         <div class="logo">LOGO</div>
@@ -22,5 +23,34 @@
             </li>
             {{!-- <li class="nav-lists-item"></li> --}}
         </ul>
+        <div class="nav-toggle">
+            <i class="fa fa-bars" style="color: #fff; font-size: 50px" aria-hidden="true"></i>
+        </div>
     </nav>
+
+    <div class="nav-side-box">
+        <p class="cross-nav"><i class="fa fa-times cross-nav-sign" style="color: #fff; font-size:35px"
+                aria-hidden="true"></i></p>
+        <div class="nav-side_item">
+            <a href="/users/me">{{name}}</a>
+        </div>
+        <div class="nav-side_item">
+            <a href="#">Home</a>
+        </div>
+        <div class="nav-side_item">
+            <a href="#">Find Friend</a>
+        </div>
+        <div class="nav-side_item">
+            <a href="/users/update">Update Info</a>
+        </div>
+        <div class="nav-side_item">
+            <a href="/users/delete">Delete Account</a>
+        </div>
+        <div class="nav-side_item">
+            <a href="/users/logout">Logout</a>
+        </div>
+        <div class="nav-side_item">
+            <a href="/users/logoutAll">Logout All</a>
+        </div>
+    </div>
 </header>
