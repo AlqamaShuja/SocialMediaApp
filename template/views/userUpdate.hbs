@@ -12,8 +12,8 @@
 <body>
     {{>header}}
     {{!-- enctype="application/x-www-form-urlencoded" --}}
-    <form action="/users/me?_method=PATCH" method="post" _method="Patch">
         {{!-- <input type="hidden" name="_id" value="{{id}}"> --}}
+    {{!-- <form action="/users/me?_method=PATCH" method="post" _method="Patch">
         <div class="inputBox">
             <label for="name">Name</label>
             <input type="text" id="name" class="input" name="name" value="{{name}}">
@@ -34,7 +34,34 @@
             <label for="female">Female</label>
         </div>
         <input type="submit" value="Update">
+    </form> --}}
+
+    <form action="/users/me?_method=PATCH" method="post" _method="Patch" class="form-login">
+        <div class="form-div"><h1 class="user-login-text">Update User</h1></div>
+        <div class="form-div">
+            <input type="text" name="name" autofocus value="{{name}}" class="inputBox" placeholder="Enter Name">
+        </div>
+        <div class="form-div">
+            <input type="email" name="email" class="inputBox" value="{{email}}" placeholder="Enter email">
+        </div>
+        <div class="form-div">
+            <input type="password" name="password" class="inputBox" placeholder="Password">
+        </div>
+        <div class="form-div">
+            {{!-- <label for="gender">Gender</label> --}}
+            <select name="gender" id="gender" class="genderBox">
+                <option class="gender_opt">Select Gender</option>
+                <option class="gender_opt" value="1" {{#if male}} selected {{/if}}>Male</option>
+                <option class="gender_opt" value="-1" {{#if female}} selected {{/if}}>Female</option>
+                <option class="gender_opt" value="0" {{#if other}} selected {{/if}}>Other</option>
+            </select>
+        </div>
+        <div class="form-div">
+            <button type="submit" class="submitBtn">Update</button>
+        </div>
     </form>
+
+    <script src="/js/index.js"></script>
 </body>
 
 </html>

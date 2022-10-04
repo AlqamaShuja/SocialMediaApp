@@ -9,6 +9,7 @@ const methodOverride = require("method-override");
 
 const app = express();
 const userRoute = require("./Router/user");
+const postRoute = require("./Router/post");
 const pathToPublic = path.join(__dirname, "../public");
 
 
@@ -27,6 +28,7 @@ app.use(methodOverride("_method"));
 
 // Routes Middleware
 app.use(userRoute);
+app.use(postRoute);
 
 
 

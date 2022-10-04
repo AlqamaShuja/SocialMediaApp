@@ -4,7 +4,7 @@ const User = require("../models/user");
 
 
 route.get("/users/me", auth, (req, res) => {
-    res.render("index", {
+    return res.render("index", {
         name: req.user.name,
         email: req.user.email
     });
@@ -17,22 +17,25 @@ route.post("/users", async (req, res) => {
     try {
         const user = new User(req.body);
         await user.save();
-        res.render("signUp", {
-            message: "Account has been created"
-        });
+        const message = encodeURIComponent("Accounthas been created");
+        res.redirect("/users/signup?message=" + message);
+        // res.render("signUp", {
+        //     message: "Account has been created"
+        // });
         // res.status(201).send(user);
     } catch (error) {
         // res.send({ error: "Something went wrong, please provide valid details" });
         if ((error.keyPattern && error.keyPattern.email == 1) && (error.keyValue && error.keyValue.email !== "")) {
             // return res.status(400).send({ error: "Email Already exists" });
             return res.render("signUp", {
-                error
+                error: "Email already exist."
             });
         }
         else if (error._message) {
             // return res.status(400).send({ error: error._message });
             return res.render("signUp", {
-                error
+                // error: error._message
+                error: "Please fill valid data"
             });
         }
         // res.send(error);
@@ -53,9 +56,10 @@ route.patch("/users/me", auth, async (req, res) => {
     try {
         updateValue.forEach(key => req.user[key] = req.body[key]);
         await req.user.save();
-        res.send(req.user);
+        // res.send(req.user);
+        res.redirect("/users/me");
     } catch (error) {
-        res.status(400).send(error);
+        res.status(400).send(error);  
     }
 });
 
@@ -97,7 +101,10 @@ route.get("/users/logoutAll", auth, (req, res) => {
 // HBS
 
 route.get("/users/signup", (req, res) => {
-    res.render("signUp"); 
+    message = req.query.message ? req.query.message : "";
+    res.render("signUp", {
+        message
+    }); 
 })
 
 route.get("/users/login", (req, res) => {
@@ -108,7 +115,10 @@ route.get("/users/update", auth, (req, res) => {
     res.render("userUpdate", {
         name: req.user.name,
         email: req.user.email,
-        gender: req.user.gender
+        // gender: req.user.gender
+        male: req.user.gender == 1 ? true : false,
+        female: req.user.gender == -1 ? true : false,
+        other: req.user.gender == 0 ? true : false,
     });
 })
 

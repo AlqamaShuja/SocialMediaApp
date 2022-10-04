@@ -45,10 +45,20 @@ const userSchema = new mongoose.Schema({
             required: true
         }
     }],
+    friendLists: [{
+        friend: {
+            type: mongoose.Schema.Types.ObjectId,
+            required: true
+        }
+    }]
+}, { timestamps: true });
+
+
+userSchema.virtual("posts", {
+    ref: "Post",
+    localField: "_id",
+    foreignField: "owner"
 });
-
-
-
 
 
 userSchema.methods.generateAuthToken = async function () {
