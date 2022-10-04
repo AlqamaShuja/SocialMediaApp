@@ -105,4 +105,57 @@
     background-color: var(--navColor);
 }
 
-/* Tooltip --> showing EMAIL */
+.nav-toggle {
+    /* display: flex; */
+    display: none;
+    align-items: center;
+    margin-right: 14px;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 350px) and (max-width: 768px) {
+    .nav-lists {
+        display: none;
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+
+    .nav-side-box {
+        width: 300px !important;
+    }
+}
+
+.nav-side-box {
+    display: none;
+    width: 30%;
+    height: 100vh;
+    background-color: rgb(33, 31, 31);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.cross-nav {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 12px;
+    cursor: pointer;
+}
+
+.nav-side_item {
+    background-color: rgb(33, 31, 31);
+    padding: 14px 12px;
+    border-bottom: 2px solid rgb(71, 71, 71);
+}
+
+.nav-side_item a {
+    color: #fff;
+    font-size: 1.4rem;
+    text-decoration: none;
+}
+
+.nav-side_item:hover {
+    background-color: rgb(0, 0, 0);
+}
