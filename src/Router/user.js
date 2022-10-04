@@ -13,6 +13,17 @@ route.get("/users/me", auth, (req, res) => {
     res.redirect("/users/login");
 });
 
+// Get User by Id
+route.get("/users/find/:id", auth, async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id);
+        if (!user) return res.status(404).send({ error: "User not fount" });
+        res.status(200).send(user);
+    } catch (error) {
+
+    }
+})
+
 route.post("/users", async (req, res) => {
     try {
         const user = new User(req.body);
@@ -59,7 +70,7 @@ route.patch("/users/me", auth, async (req, res) => {
         // res.send(req.user);
         res.redirect("/users/me");
     } catch (error) {
-        res.status(400).send(error);  
+        res.status(400).send(error);
     }
 });
 
@@ -104,7 +115,7 @@ route.get("/users/signup", (req, res) => {
     message = req.query.message ? req.query.message : "";
     res.render("signUp", {
         message
-    }); 
+    });
 })
 
 route.get("/users/login", (req, res) => {

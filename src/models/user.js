@@ -50,14 +50,20 @@ const userSchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             required: true
         }
+    }],
+    postLists: [{
+        myPost: {
+            type: mongoose.Schema.Types.ObjectId,
+            required: true
+        }
     }]
 }, { timestamps: true });
 
 
 userSchema.virtual("posts", {
     ref: "Post",
-    localField: "_id",
-    foreignField: "owner"
+    localField: "postLists.myPost",
+    foreignField: "_id"
 });
 
 

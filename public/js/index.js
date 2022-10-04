@@ -16,22 +16,24 @@ document.querySelector(".cross-nav-sign").addEventListener("click", toggleNav);
 
 let output = "";
 
+console.log("Before Fetch");
 fetch("http://localhost:3000/users/post")
-.then(postData => {
-    return postData.json();
-}).then(postData => {
-    postData.posts.forEach(data => {
-        console.log(data);
-        // output += `
-        //     <div class="container">
-        //         <h3>${postData.name}</h3>
-        //         <p>${data.}</p>
-        //         <p>Content should write here</p>
-        //     </div>
-        // `;
+    .then(postData => {
+        console.log("ABCD Fetch");
+        return postData.json();
+    }).then(postData => {
+        postData.forEach(data => {
+            console.log(data);
+            // fetch(`http://localhost:3000/users/find/+${data.owner}`)
+            //     .then(userData => userData.json())
+            //     .then(userData => {
+            //     });
+            // });
+            output += `<div class="container">
+                    <h3>${userData.name}</h3>
+                    <p>${data.createdAt}</p>
+                    <p>${data.title}</p>
+                </div>`;
+            document.querySelector("#allContents").innerHTML = output;
+        });
     });
-});
-
-
-
-document.querySelector("#allContents").innerHTML = output;

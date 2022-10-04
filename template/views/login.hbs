@@ -11,10 +11,15 @@
 
 <body>
     {{#if error}}
-    <div class="alert alert-danger">{{error}}</div>
+    {{!-- class="message" --}}
+    <div class="error-box">
+        <p class="error-message-login">{{error}}</p>
+    </div>
     {{/if}}
     <form action="/users/login" method="post" class="form-login">
-        <div class="form-div"><h1 class="user-login-text">Login User</h1></div>
+        <div class="form-div">
+            <h1 class="user-login-text">Login User</h1>
+        </div>
         <div class="form-div">
             {{!-- <label for="emailLogin">Email address</label> --}}
             <input type="email" name="email" autofocus class="inputBox email" id="emailLogin" placeholder="Enter email">
