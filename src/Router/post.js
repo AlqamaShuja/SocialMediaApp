@@ -5,8 +5,13 @@ const User = require("../models/user");
 
 
 
-route.get("/posts", (req, res) => {
-    res.send("Hello, JS");
+route.get("/users/posts", auth, async (req, res) => {  
+    const posts =  await Post.find().populate({
+        path: "users"
+    }).sort({
+        updatedAt: -1
+    });
+    res.send(posts);
 });
 
 route.post("/posts", auth, async (req, res) => {
@@ -31,14 +36,28 @@ route.post("/posts", auth, async (req, res) => {
 
 // HBS
 route.get("/users/newpost", auth, (req, res) => {
-    res.render("newPost");
+    res.render("newPost", {
+        name: req.user.name
+    });
+});
+
+// Read Current User Post
+route.get("/users/mypost", auth, (req, res) => {
+    res.render("mypost", {
+        name: req.user.name
+    });
 });
 
 // Read All Post
-route.get("/users/post", auth, async (req, res) => {
+route.get("/users/me/post", auth, async (req, res) => {
     try {
         await req.user.populate({
             path: "posts",
+            options: {
+                sort: {
+                    updatedAt: 'asc'
+                }
+            }
         });
         // console.log(req.user.posts);
         // await req.user.posts.populate({
@@ -57,9 +76,9 @@ route.get("/users/post", auth, async (req, res) => {
         res.send(req.user.posts);
 
     } catch (error) {
-
+        res.status(404).send();
     }
-})
+});
 
 
 

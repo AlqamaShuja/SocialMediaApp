@@ -3,6 +3,7 @@ const auth = require("../middleware/auth");
 const User = require("../models/user");
 
 
+
 route.get("/users/me", auth, (req, res) => {
     return res.render("index", {
         name: req.user.name,
@@ -28,7 +29,7 @@ route.post("/users", async (req, res) => {
     try {
         const user = new User(req.body);
         await user.save();
-        const message = encodeURIComponent("Accounthas been created");
+        const message = encodeURIComponent("Account has been created");
         res.redirect("/users/signup?message=" + message);
         // res.render("signUp", {
         //     message: "Account has been created"

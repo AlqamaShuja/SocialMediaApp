@@ -5,9 +5,11 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const hbs = require("hbs");
 const methodOverride = require("method-override");
+const socketio = require("socket.io");
 
 
 const app = express();
+const io = socketio();
 const userRoute = require("./Router/user");
 const postRoute = require("./Router/post");
 const pathToPublic = path.join(__dirname, "../public");
@@ -31,7 +33,11 @@ app.use(userRoute);
 app.use(postRoute);
 
 
-
+// io.on("connection", (socket) => {
+//     socket.on("newPost", () => {
+//         io.emit("");
+//     })
+// })
 
 
 const port = process.env.PORT || 3000;

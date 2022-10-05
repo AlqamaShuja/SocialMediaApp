@@ -39,7 +39,11 @@ body {
 }
 
 .success-message p {
+    padding: 14px;
     background-color: rgb(92, 173, 109);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1.3rem;
 }
 
 
@@ -192,4 +196,20 @@ select.decorated option:hover {
     font-size: 1.2rem;
     /* overflow-y: scroll; */
     resize: none;
+}
+
+
+.loginRedirectLink {
+    display: flex;
+    justify-content: center;
+}
+
+.loginRedirectLink a {
+    color: rgb(106, 104, 104);
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
+.loginRedirectLink a:hover,  .loginRedirectLink a:focus {
+    color: rgb(63, 62, 62);
 }

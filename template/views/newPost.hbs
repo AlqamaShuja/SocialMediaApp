@@ -10,14 +10,13 @@
 </head>
 
 <body>
+    {{>header}}
     <form action="/posts" method="post" class="form-login">
         <div class="form-div"><h1 class="user-login-text">New Post</h1></div>
         <div class="form-div">
             {{!-- <label for="emailLogin">Email address</label> --}}
             <textarea type="text" name="title" autofocus 
-                class="inputBox postBox" cols="10" placeholder="Type here">
-                
-            </textarea>
+                class="inputBox postBox" cols="10" placeholder="Type here"></textarea>
         </div>
         <div class="form-div">
             <button type="submit" class="submitBtn">Uplaod</button>

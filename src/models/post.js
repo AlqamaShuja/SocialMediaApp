@@ -5,8 +5,7 @@ const postSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
-        minLength: 3,
-        maxLength: 40
+        // minLength: 3,
     },
     owner: {
         type: mongoose.Schema.Types.ObjectId,

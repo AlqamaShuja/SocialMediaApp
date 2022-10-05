@@ -6,6 +6,28 @@ body {
 .container {
     width: 50%;
     min-height: 70px;
-    background-color: rgb(91, 90, 90);
+    background-color: rgb(143, 142, 142);
     border-radius: 10px;
+    padding: 10px 20px;
+    margin: 10px;
+}
+
+#allContents, #myposts {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ownerName {
+    color: #fff;
+}
+
+.like_dislike {
+    display: flex;
+
+}
+
+.like_dislike p {
+    margin-right: 25px;
 }
