@@ -15,7 +15,13 @@ const postSchema = new mongoose.Schema({
     ownerName: {
         type: String,
         required: true
-    }
+    },
+    likeBy: [{
+        like: {
+            type: mongoose.Schema.Types.ObjectId,
+            required: true
+        }
+    }],
 }, { timestamps: true });
 
 postSchema.virtual("users", {

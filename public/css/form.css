@@ -210,6 +210,7 @@ select.decorated option:hover {
     text-decoration: none;
 }
 
-.loginRedirectLink a:hover,  .loginRedirectLink a:focus {
+.loginRedirectLink a:hover,
+.loginRedirectLink a:focus {
     color: rgb(63, 62, 62);
 }

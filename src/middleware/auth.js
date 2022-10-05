@@ -10,7 +10,9 @@ const auth = async (req, res, next) => {
     const user = await User.findOne({ _id: decoded._id, "tokens.token": token });
     if (!user) {
         // return res.send({ error: "Please Login First" });
-        throw new Error();
+        return res.render("login", {
+            error: "Please Login First"
+        });
     }
     req.user = user;
     req.token = token;

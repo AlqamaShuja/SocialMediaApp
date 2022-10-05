@@ -10,32 +10,31 @@
 </head>
 
 <body>
-    <div class="loginRedirectLink">
-            <a href="/users/signup">Create Account</a>
-    </div>
     {{#if error}}
     {{!-- class="message" --}}
     <div class="error-box">
         <p class="error-message-login">{{error}}</p>
     </div>
     {{/if}}
-        <form action="/users/login" method="post"  class="form-login">
-            <div class="form-div">
-                <h1 class="user-login-text">Login User</h1>
-            </div>
-            <div class="form-div">
-                {{!-- <label for="emailLogin">Email address</label> --}}
-                <input type="email" name="email" autofocus class="inputBox email" id="emailLogin" placeholder="Enter email">
-            </div>
-            <div class="form-div">
-                {{!-- <label for="passwordLogin">Password</label> --}}
-                <input type="password" name="password" class="inputBox password" id="passwordLogin" placeholder="Password">
-            </div>
-            <div class="form-div">
-                <button type="submit" class="submitBtn">Login</button>
-            </div>
-            
-        </form>
+    <form action="/users/login" method="post" class="form-login">
+        <div class="form-div">
+            <h1 class="user-login-text">Login User</h1>
+        </div>
+        <div class="form-div">
+            {{!-- <label for="emailLogin">Email address</label> --}}
+            <input type="email" name="email" autofocus class="inputBox email" id="emailLogin" placeholder="Enter email">
+        </div>
+        <div class="form-div">
+            {{!-- <label for="passwordLogin">Password</label> --}}
+            <input type="password" name="password" class="inputBox password" id="passwordLogin" placeholder="Password">
+        </div>
+        <div class="form-div">
+            <button type="submit" class="submitBtn">Login</button>
+        </div>
+        <div class="loginRedirectLink">
+            <a href="/users/signup">Create Account</a>
+        </div>
+    </form>
 
 </body>
 

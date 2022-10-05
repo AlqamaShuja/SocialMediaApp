@@ -5,10 +5,14 @@ const User = require("../models/user");
 
 
 route.get("/users/me", auth, (req, res) => {
-    return res.render("index", {
-        name: req.user.name,
-        email: req.user.email
-    });
+    try {
+        return res.render("index", {
+            name: req.user.name,
+            email: req.user.email
+        });
+    } catch (error) {
+        res.redirect("/users/login");
+    }
     // res.send("Hello")
 }, (error, req, res, next) => {
     res.redirect("/users/login");

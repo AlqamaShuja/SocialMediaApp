@@ -12,7 +12,8 @@ body {
     margin: 10px;
 }
 
-#allContents, #myposts {
+#allContents,
+#myposts {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -28,6 +29,10 @@ body {
 
 }
 
-.like_dislike p {
+.like {
     margin-right: 25px;
+}
+
+.likeCount {
+    margin-left: 6px;
 }

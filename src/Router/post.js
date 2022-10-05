@@ -5,8 +5,8 @@ const User = require("../models/user");
 
 
 
-route.get("/users/posts", auth, async (req, res) => {  
-    const posts =  await Post.find().populate({
+route.get("/users/posts", auth, async (req, res) => {
+    const posts = await Post.find().populate({
         path: "users"
     }).sort({
         updatedAt: -1
@@ -25,11 +25,81 @@ route.post("/posts", auth, async (req, res) => {
         await req.user.save();
         await post.save();
         // res.send(post);
-        res.redirect("/users/me")
+        res.redirect("/users/me");
     } catch (error) {
         res.send(error);
     }
     // res.send("Hello, JS");
+});
+
+// Update db for hitting like btn
+// route.get("/users/posts/:ownerId/:postId", auth, async (req, res) => {
+//     const post = await Post.findById(req.params.postId);
+//     if (!post) return;
+//     const user = await User.findById(req.params.ownerId);
+//     if (!user) return;
+//     let isAlreadyAdd = false;
+//     post.likeBy.forEach(ownerObj => {
+//         if (ownerObj.like == req.params.ownerId) {
+//             isAlreadyAdd = true;
+//         }
+//     });
+//     console.log(isAlreadyAdd);
+//     // if (filteredList.length) {
+//     //     isAlreadyAdd = post.likeBy.every((ownerObj, index) => ownerObj.like == filteredList[index].like);
+//     // }
+//     // console.log(isAlreadyAdd);
+//     if (!isAlreadyAdd) {
+//         post.likeBy = post.likeBy.concat({ like: req.params.ownerId });
+//     }
+//     else {
+//         let filteredList = post.likeBy.filter(ownerObj => ownerObj.like != req.params.ownerId);
+//         console.log(filteredList);
+//         post.likeBy = filteredList;
+//     }
+//     await post.save();
+//     res.send({ like: post.likeBy.length });
+// });
+
+
+route.get("/users/posts/:ownerId/:postId", auth, async (req, res) => {
+    const post = await Post.findById(req.params.postId);
+    if (!post) return;
+    // const user = await User.findById(req.params.ownerId);
+    // if (!user) return;
+    let isAlreadyAdd = false;
+    post.likeBy.forEach(ownerObj => {
+        console.log(ownerObj.like);
+        console.log(req.user._id);
+        if (ownerObj.like.equals(req.user._id)) {
+            // if (ownerObj.like == req.user._id) {
+            isAlreadyAdd = true;
+        }
+    });
+    // console.log(isAlreadyAdd);
+    // if (filteredList.length) {
+    //     isAlreadyAdd = post.likeBy.every((ownerObj, index) => ownerObj.like == filteredList[index].like);
+    // }
+    // console.log(isAlreadyAdd);
+    if (!isAlreadyAdd) {
+        post.likeBy = post.likeBy.concat({ like: req.user._id });
+    }
+    else {
+        let filteredList = post.likeBy.filter(ownerObj => ownerObj.like.toString() != req.user._id.toString());
+        console.log(filteredList);
+        post.likeBy = filteredList;
+    }
+    await post.save();
+    res.send({ like: post.likeBy.length });
+});
+
+
+
+// Read LIKE Count
+route.get("/users/posts/:postId", async (req, res) => {
+    const post = await Post.findById(req.params.postId);
+    if (!post) return;
+    res.status(200).send({ like: post.likeBy.length });
 });
 
 
@@ -55,7 +125,7 @@ route.get("/users/me/post", auth, async (req, res) => {
             path: "posts",
             options: {
                 sort: {
-                    updatedAt: 'asc'
+                    updatedAt: 1
                 }
             }
         });
@@ -79,6 +149,8 @@ route.get("/users/me/post", auth, async (req, res) => {
         res.status(404).send();
     }
 });
+
+
 
 
 
