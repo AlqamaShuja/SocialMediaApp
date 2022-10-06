@@ -9,7 +9,7 @@ route.get("/users/posts", auth, async (req, res) => {
     const posts = await Post.find().populate({
         path: "users"
     }).sort({
-        updatedAt: -1
+        createdAt: -1
     });
     res.send(posts);
 });
@@ -96,11 +96,11 @@ route.get("/users/posts/:ownerId/:postId", auth, async (req, res) => {
 
 
 // Read LIKE Count
-route.get("/users/posts/:postId", async (req, res) => {
-    const post = await Post.findById(req.params.postId);
-    if (!post) return;
-    res.status(200).send({ like: post.likeBy.length });
-});
+// route.get("/users/posts/:postId", async (req, res) => {
+//     const post = await Post.findById(req.params.postId);
+//     if (!post) return;
+//     res.status(200).send({ like: post.likeBy.length });
+// });
 
 
 
@@ -125,7 +125,7 @@ route.get("/users/me/post", auth, async (req, res) => {
             path: "posts",
             options: {
                 sort: {
-                    updatedAt: 1
+                    createdAt: 1
                 }
             }
         });
