@@ -1,9 +1,11 @@
 
 let output = "";
 
-function updatePost(id){
-    location.href=`http://localhost:3000/users/updatepost?id=${id}`;
+function updatePost(id) {
+    location.href = `http://localhost:3000/users/updatepost?id=${id}`;
 }
+
+
 
 
 fetch("http://localhost:3000/users/me/post")
@@ -11,13 +13,13 @@ fetch("http://localhost:3000/users/me/post")
     .then(postData => {
         if (postData.length == 0) throw new Error();
         postData.forEach(data => {
-            output += `<div class="container"> 
+            output += `<div class="container">
             <div class="postUpdate">
-                <h3 class='ownerName ownerNameAnim'>${data.ownerName}</h3>
+                <h3 class='ownerName ownerNameAnim'>${capitalizeFirst(data.ownerName)}</h3>
                 <p class="updateIcon" onclick=updatePost("${data._id}")><i class="fa fa-pencil-square" aria-hidden="true"></i></p>
             </div>
-                <p>${data.updatedAt}</p>
-                <p>${data.title}</p>
+                <p class='createdAt'>${data.createdAt}</p>
+                <p class='title'>${data.title}</p>
                 <div class='like_dislike'>
                     <p class='like' onclick='likeOrDislike(this)' 
                         data-post-id=${data._id} data-owner-id=${data.owner}>

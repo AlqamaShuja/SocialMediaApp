@@ -10,5 +10,9 @@ function toggleNav() {
     }
 }
 
+function goTo(e) {
+    location.href = e.children[0].getAttribute("href");
+}
+
 nav_toggle.addEventListener("click", toggleNav);
 document.querySelector(".cross-nav-sign").addEventListener("click", toggleNav);

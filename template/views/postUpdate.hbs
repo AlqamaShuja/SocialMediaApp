@@ -6,19 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/css/form.css">
-    <title>User Login</title>
+    <title>Update Post</title>
 </head>
 
 <body>
     {{>header}}
     <form action="/posts/{{id}}?_method=PATCH" method="post" _method="patch" class="form-login">
-        <div class="form-div"><h1 class="user-login-text">New Post</h1></div>
         <div class="form-div">
-            <textarea type="text" name="title" autofocus 
-                class="inputBox postBox" cols="10" placeholder="Type here">{{#if title}}{{title}}{{/if}}</textarea>
+            <h1 class="user-login-text">Update Post</h1>
         </div>
         <div class="form-div">
-            <button type="submit" class="submitBtn">Uplaod</button>
+            <textarea type="text" name="title" autofocus class="inputBox postBox" cols="10"
+                placeholder="Type here">{{title}}</textarea>
+        </div>
+        <div class="form-div">
+            <button type="submit" class="submitBtn">Update</button>
         </div>
     </form>
 </body>

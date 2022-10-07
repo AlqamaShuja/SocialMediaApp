@@ -4,7 +4,7 @@
     <nav class="nav">
         <div class="logo">LOGO</div>
         <ul class="nav-lists">
-            <li class="nav-list-item active"><a href="#">Home</a></li>
+            <li class="nav-list-item active" onclick="goTo(this)"><a href="/users/me">Home</a></li>
             <li class="nav-list-item user-name">
                 <a href="#">New</a>
                 <div class="dropMenu">
@@ -13,7 +13,7 @@
                 <div class="dropMenu findFirend">
                     <a href="#">Find Friend</a>
                 </div>
-                <div class="dropMenu logout">
+                <div class="dropMenu logout" onclick="goTo(this)">
                     <a href="/users/mypost">My Post</a>
                 </div>
                 {{!-- <div class="dropMenu logoutAll">
@@ -22,16 +22,16 @@
             </li>
             <li class="nav-list-item user-name">
                 <a href="/users/me">{{name}}</a>
-                <div class="dropMenu">
+                <div class="dropMenu" onclick="goTo(this)">
                     <a href="/users/update">Update Info</a>
                 </div>
-                <div class="dropMenu deleteAccount">
+                <div class="dropMenu deleteAccount" onclick="goTo(this)">
                     <a href="/users/delete">Delete Account</a>
                 </div>
-                <div class="dropMenu logout">
+                <div class="dropMenu logout" onclick="goTo(this)">
                     <a href="/users/logout">Logout</a>
                 </div>
-                <div class="dropMenu logoutAll">
+                <div class="dropMenu logoutAll" onclick="goTo(this)">
                     <a href="/users/logoutAll">Logout All</a>
                 </div>
             </li>
@@ -44,30 +44,30 @@
 
     <div class="nav-side-box">
         <p class="cross-nav">
-            <i class="fa fa-times cross-nav-sign" style="color: #fff; font-size:28px"
-                aria-hidden="true"></i></p>
-        <div class="nav-side_item">
+            <i class="fa fa-times cross-nav-sign" style="color: #fff; font-size:28px" aria-hidden="true"></i>
+        </p>
+        <div class="nav-side_item" onclick="goTo(this)">
             <a href="/users/mypost">{{name}}</a>
         </div>
-        <div class="nav-side_item">
+        <div class="nav-side_item" onclick="goTo(this)">
             <a href="/users/me">Home</a>
         </div>
-        <div class="nav-side_item">
+        <div class="nav-side_item" onclick="goTo(this)">
             <a href="/users/newpost">New Post</a>
         </div>
-        <div class="nav-side_item">
+        <div class="nav-side_item" onclick="goTo(this)">
             <a href="#">Find Friend</a>
         </div>
-        <div class="nav-side_item">
+        <div class="nav-side_item" onclick="goTo(this)">
             <a href="/users/update">Update Info</a>
         </div>
-        <div class="nav-side_item">
+        <div class="nav-side_item" onclick="goTo(this)">
             <a href="/users/delete">Delete Account</a>
         </div>
-        <div class="nav-side_item">
+        <div class="nav-side_item" onclick="goTo(this)">
             <a href="/users/logout">Logout</a>
         </div>
-        <div class="nav-side_item">
+        <div class="nav-side_item" onclick="goTo(this)">
             <a href="/users/logoutAll">Logout All</a>
         </div>
     </div>

@@ -6,12 +6,11 @@ const User = require("../models/user");
 
 
 route.get("/users/posts", auth, async (req, res) => {
-    const posts = await Post.find().populate({
-        path: "users"
-    }).sort({
+    const posts = await Post.find().sort({
         createdAt: -1
     });
-    res.send(posts);
+    res.send({ posts, currentUser: req.user._id });
+    // res.send(posts);
 });
 
 route.post("/posts", auth, async (req, res) => {
@@ -35,7 +34,7 @@ route.post("/posts", auth, async (req, res) => {
 route.patch("/posts/:id", auth, async (req, res) => {
     try {
         const post = await Post.findById(req.params.id);
-        if(!post) return;
+        if (!post) return;
         post.title = req.body.title
         // req.user.postLists = req.user.postLists.concat({ myPost: post._id });
         // await req.user.save();
@@ -129,13 +128,13 @@ route.get("/users/updatepost", auth, async (req, res) => {
     const data = {
         name: req.user.name
     }
-    console.log("Id UPDATE " + req.query.id);
-    if(req.query.id){
+    if (req.query.id) {
         const post = await Post.findById(req.query.id);
-        if(post){
+        if (post) {
             data.id = req.query.id;
             data.title = post.title
-            return res.render("newPost", data);
+            console.log(data);
+            return res.render("postUpdate", data);
         }
         else {
             return res.render("newPost", data);
@@ -152,7 +151,7 @@ route.get("/users/mypost", auth, (req, res) => {
     });
 });
 
-// Read All Post
+// Read All Post (Not Used)
 route.get("/users/me/post", auth, async (req, res) => {
     try {
         await req.user.populate({
