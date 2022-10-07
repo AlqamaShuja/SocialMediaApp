@@ -10,6 +10,7 @@ body {
     border-radius: 10px;
     padding: 10px 20px;
     margin: 10px;
+    box-sizing: border-box;
 }
 
 #allContents,
@@ -24,6 +25,15 @@ body {
     color: #fff;
 }
 
+.ownerNameAnim {
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.ownerNameAnim:hover {
+    transform: scale(1.2);
+}
+
 .like_dislike {
     display: flex;
 
@@ -35,4 +45,23 @@ body {
 
 .likeCount {
     margin-left: 6px;
+}
+
+.postUpdate {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* position: relative; */
+}
+
+.updateIcon {
+    color: #fff;
+    /* position: absolute; */
+    right: 10px;
+    transition: transform 0.3s;
+}
+
+.updateIcon:hover {
+    cursor: pointer;
+    transform: scale(1.5);
 }

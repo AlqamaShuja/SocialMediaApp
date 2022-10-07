@@ -5,7 +5,21 @@
         <div class="logo">LOGO</div>
         <ul class="nav-lists">
             <li class="nav-list-item active"><a href="#">Home</a></li>
-            <li class="nav-list-item"><a href="#">Find Friend</a></li>
+            <li class="nav-list-item user-name">
+                <a href="#">New</a>
+                <div class="dropMenu">
+                    <a href="/users/newpost">New Post</a>
+                </div>
+                <div class="dropMenu findFirend">
+                    <a href="#">Find Friend</a>
+                </div>
+                <div class="dropMenu logout">
+                    <a href="/users/mypost">My Post</a>
+                </div>
+                {{!-- <div class="dropMenu logoutAll">
+                    <a href="/users/logoutAll">Logout All</a>
+                </div> --}}
+            </li>
             <li class="nav-list-item user-name">
                 <a href="/users/me">{{name}}</a>
                 <div class="dropMenu">

@@ -136,7 +136,8 @@ route.get("/users/update", auth, (req, res) => {
         female: req.user.gender == -1 ? true : false,
         other: req.user.gender == 0 ? true : false,
     });
-})
+});
+
 
 
 

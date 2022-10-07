@@ -32,6 +32,22 @@ route.post("/posts", auth, async (req, res) => {
     // res.send("Hello, JS");
 });
 
+route.patch("/posts/:id", auth, async (req, res) => {
+    try {
+        const post = await Post.findById(req.params.id);
+        if(!post) return;
+        post.title = req.body.title
+        // req.user.postLists = req.user.postLists.concat({ myPost: post._id });
+        // await req.user.save();
+        await post.save();
+        // res.send(post);
+        res.redirect("/users/me");
+    } catch (error) {
+        res.send(error);
+    }
+    // res.send("Hello, JS");
+});
+
 // Update db for hitting like btn
 // route.get("/users/posts/:ownerId/:postId", auth, async (req, res) => {
 //     const post = await Post.findById(req.params.postId);
@@ -69,8 +85,6 @@ route.get("/users/posts/:ownerId/:postId", auth, async (req, res) => {
     // if (!user) return;
     let isAlreadyAdd = false;
     post.likeBy.forEach(ownerObj => {
-        console.log(ownerObj.like);
-        console.log(req.user._id);
         if (ownerObj.like.equals(req.user._id)) {
             // if (ownerObj.like == req.user._id) {
             isAlreadyAdd = true;
@@ -86,7 +100,6 @@ route.get("/users/posts/:ownerId/:postId", auth, async (req, res) => {
     }
     else {
         let filteredList = post.likeBy.filter(ownerObj => ownerObj.like.toString() != req.user._id.toString());
-        console.log(filteredList);
         post.likeBy = filteredList;
     }
     await post.save();
@@ -105,10 +118,31 @@ route.get("/users/posts/:ownerId/:postId", auth, async (req, res) => {
 
 
 // HBS
-route.get("/users/newpost", auth, (req, res) => {
+route.get("/users/newpost", auth, async (req, res) => {
     res.render("newPost", {
         name: req.user.name
     });
+});
+
+// Update Post
+route.get("/users/updatepost", auth, async (req, res) => {
+    const data = {
+        name: req.user.name
+    }
+    console.log("Id UPDATE " + req.query.id);
+    if(req.query.id){
+        const post = await Post.findById(req.query.id);
+        if(post){
+            data.id = req.query.id;
+            data.title = post.title
+            return res.render("newPost", data);
+        }
+        else {
+            return res.render("newPost", data);
+        }
+    }
+    console.log(data);
+    res.render("newPost", data);
 });
 
 // Read Current User Post
