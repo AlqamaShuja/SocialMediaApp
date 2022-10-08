@@ -5,6 +5,13 @@ function updatePost(id) {
     location.href = `http://localhost:3000/users/updatepost?id=${id}`;
 }
 
+function deletePost(id){
+    fetch(`http://localhost:3000/posts/${id}?_method=DELETE`, { method: 'DELETE' })
+    .then(data => {
+        // console.log(data);
+        location.href = `http://localhost:3000/users/mypost`;
+    });
+}
 
 
 
@@ -16,7 +23,10 @@ fetch("http://localhost:3000/users/me/post")
             output += `<div class="container">
             <div class="postUpdate">
                 <h3 class='ownerName ownerNameAnim'>${capitalizeFirst(data.ownerName)}</h3>
-                <p class="updateIcon" onclick=updatePost("${data._id}")><i class="fa fa-pencil-square" aria-hidden="true"></i></p>
+                <div class='icon-update-delete'>
+                    <i class="fa fa-trash" aria-hidden="true" onclick='deletePost("${data._id}")'></i>
+                    <p class="" onclick=updatePost("${data._id}")><i class="fa fa-pencil-square" aria-hidden="true"></i></p>
+                </div>
             </div>
                 <p class='createdAt'>${data.createdAt}</p>
                 <p class='title'>${data.title}</p>
@@ -32,6 +42,6 @@ fetch("http://localhost:3000/users/me/post")
         document.querySelector("#myposts").innerHTML = output;
     }).catch(error => {
         document.querySelector("#myposts").innerHTML = `<div class="container">
-                                                            <h3>No Post Found</h3>
+                                                            <h3 class='noPostFound'>No Post Found</h3>
                                                         </div>`;
     });

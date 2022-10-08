@@ -10,11 +10,12 @@ route.get("/users/posts", auth, async (req, res) => {
         createdAt: -1
     });
     res.send({ posts, currentUser: req.user._id });
-    // res.send(posts);
 });
 
+// Creting new Post
 route.post("/posts", auth, async (req, res) => {
     try {
+        console.log(req.body.title);
         const post = new Post({
             title: req.body.title,
             owner: req.user._id,
@@ -23,77 +24,50 @@ route.post("/posts", auth, async (req, res) => {
         req.user.postLists = req.user.postLists.concat({ myPost: post._id });
         await req.user.save();
         await post.save();
-        // res.send(post);
         res.redirect("/users/me");
     } catch (error) {
         res.send(error);
     }
-    // res.send("Hello, JS");
 });
 
-route.patch("/posts/:id", auth, async (req, res) => {
+// Update Post
+route.patch("/posts/:id", auth, async (req, res) => { 
     try {
         const post = await Post.findById(req.params.id);
         if (!post) return;
-        post.title = req.body.title
-        // req.user.postLists = req.user.postLists.concat({ myPost: post._id });
-        // await req.user.save();
+        post.title = req.body.title;
         await post.save();
-        // res.send(post);
-        res.redirect("/users/me");
+        
+        res.redirect("/users/mypost");
     } catch (error) {
         res.send(error);
+    }
+});
+
+// Delete Post
+route.delete("/posts/:id", auth, async (req, res) => {
+    try {
+        const post = await Post.findById(req.params.id);
+        if (!post) return;
+        await post.remove();
+        res.send({ success: true });
+    } catch (error) {
+        res.send({ success: false });
     }
     // res.send("Hello, JS");
 });
 
-// Update db for hitting like btn
-// route.get("/users/posts/:ownerId/:postId", auth, async (req, res) => {
-//     const post = await Post.findById(req.params.postId);
-//     if (!post) return;
-//     const user = await User.findById(req.params.ownerId);
-//     if (!user) return;
-//     let isAlreadyAdd = false;
-//     post.likeBy.forEach(ownerObj => {
-//         if (ownerObj.like == req.params.ownerId) {
-//             isAlreadyAdd = true;
-//         }
-//     });
-//     console.log(isAlreadyAdd);
-//     // if (filteredList.length) {
-//     //     isAlreadyAdd = post.likeBy.every((ownerObj, index) => ownerObj.like == filteredList[index].like);
-//     // }
-//     // console.log(isAlreadyAdd);
-//     if (!isAlreadyAdd) {
-//         post.likeBy = post.likeBy.concat({ like: req.params.ownerId });
-//     }
-//     else {
-//         let filteredList = post.likeBy.filter(ownerObj => ownerObj.like != req.params.ownerId);
-//         console.log(filteredList);
-//         post.likeBy = filteredList;
-//     }
-//     await post.save();
-//     res.send({ like: post.likeBy.length });
-// });
-
-
+// Update like value in a specific post
 route.get("/users/posts/:ownerId/:postId", auth, async (req, res) => {
     const post = await Post.findById(req.params.postId);
     if (!post) return;
-    // const user = await User.findById(req.params.ownerId);
-    // if (!user) return;
     let isAlreadyAdd = false;
     post.likeBy.forEach(ownerObj => {
         if (ownerObj.like.equals(req.user._id)) {
-            // if (ownerObj.like == req.user._id) {
             isAlreadyAdd = true;
         }
     });
-    // console.log(isAlreadyAdd);
-    // if (filteredList.length) {
-    //     isAlreadyAdd = post.likeBy.every((ownerObj, index) => ownerObj.like == filteredList[index].like);
-    // }
-    // console.log(isAlreadyAdd);
+
     if (!isAlreadyAdd) {
         post.likeBy = post.likeBy.concat({ like: req.user._id });
     }
@@ -106,13 +80,20 @@ route.get("/users/posts/:ownerId/:postId", auth, async (req, res) => {
 });
 
 
-
-// Read LIKE Count
-// route.get("/users/posts/:postId", async (req, res) => {
-//     const post = await Post.findById(req.params.postId);
-//     if (!post) return;
-//     res.status(200).send({ like: post.likeBy.length });
-// });
+// Comment on Post
+route.get("/users/me/post/comment/:id", auth, async (req, res) => {
+    try {
+        const post = await Post.findById(req.params.id);
+        if(!post) return res.redirect("/users/me");
+        // res.render("postComment", {
+        //     name: req.user.name,
+        //     data: post
+        // });
+        res.send(post);
+    } catch (error) {
+        res.redirect("/users/me");
+    }
+});
 
 
 
@@ -151,8 +132,8 @@ route.get("/users/mypost", auth, (req, res) => {
     });
 });
 
-// Read All Post (Not Used)
-route.get("/users/me/post", auth, async (req, res) => {
+// Read All Post
+route.get("/users/me/post", auth, async (req, res) => { 
     try {
         await req.user.populate({
             path: "posts",
@@ -183,7 +164,20 @@ route.get("/users/me/post", auth, async (req, res) => {
     }
 });
 
-
+// Comment on Post HBS
+route.get("/users/me/post/comment", auth, async (req, res) => {
+    try {
+        const post = await Post.findById(req.query.id);
+        if(!post) return res.redirect("/users/me");
+        res.render("postComment", {
+            name: req.user.name,
+            id: post._id
+        });
+        // res.send(post);
+    } catch (error) {
+        res.redirect("/users/me");
+    }
+});
 
 
 

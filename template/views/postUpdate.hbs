@@ -7,6 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/css/form.css">
     <title>Update Post</title>
+    <style>
+        .form-div textarea {
+            white-space: pre-wrap;
+        }
+    </style>
 </head>
 
 <body>
@@ -23,6 +28,11 @@
             <button type="submit" class="submitBtn">Update</button>
         </div>
     </form>
-</body>
 
+    <script>
+        const textarea = document.querySelector(".inputBox");
+        len = textarea.value.length;
+        textarea.setSelectionRange(len, len);
+    </script>
+</body>
 </html>

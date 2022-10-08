@@ -1,3 +1,8 @@
+:root {
+    --baseColorWhite: #fff;
+    --baseColorGold: gold;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -23,7 +28,7 @@ body {
 
 .ownerName {
     /* color: #fff; */
-    color: gold;
+    color: var(--baseColorGold);
 }
 
 .ownerNameAnim {
@@ -47,13 +52,19 @@ body {
 
 .like {
     margin-right: 25px;
-    color: #fff;
+    color: var(--baseColorWhite);
+    /* transition: transform 0.2s; */
 }
 
+.like:hover {
+    color: var(--baseColorGold);
+    cursor: pointer;
+    /* transform: scale(1.1); */
+}
 
 .likeCount {
     margin-left: 6px;
-    color: #fff;
+    color: var(--baseColorWhite);
 }
 
 .postUpdate {
@@ -64,22 +75,66 @@ body {
 }
 
 .updateIcon {
-    color: #fff;
+    color: var(--baseColorWhite);
     /* position: absolute; */
-    right: 10px;
+    /* right: 10px; */
     transition: transform 0.3s;
 }
 
 .updateIcon:hover {
     cursor: pointer;
-    transform: scale(1.5);
+    transform: scale(1.4);
 }
 
 .title {
-    color: #fff;
+    color: var(--baseColorWhite);
     font-size: 1.3rem;
+    white-space: pre-wrap;
 }
 
 .createdAt {
-    color: #fff;
+    color: var(--baseColorWhite);
+}
+
+.icon-update-delete {
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+}
+.icon-update-delete .fa {
+    margin-right: 25px;
+    font-size: 1.2rem;
+    color: var(--baseColorWhite);
+    transition: transform 0.2s;
+}
+
+.icon-update-delete .fa:hover {
+    transform: scale(1.6);
+}
+
+.noPostFound {
+    color: var(--baseColorWhite);
+}
+
+.commentBox {
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.comment {
+    color: var(--baseColorWhite);
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
+.comment:hover {
+    color: var(--baseColorGold);
+}
+
+.singlePostWithComment {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

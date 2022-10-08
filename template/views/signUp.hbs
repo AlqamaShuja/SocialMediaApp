@@ -34,8 +34,8 @@
         <div class="form-div">
             <input type="email" name="email" required class="inputBox" placeholder="Enter email">
         </div>
-        <div class="form-div">
-            <input type="password" name="password" required class="inputBox" placeholder="Password">
+        <div class="form-div" id="passwordDiv">
+            <input type="password" onchange="myFunc()" minlength="6" name="password" required class="inputBox" placeholder="Password">
         </div>
         <div class="form-div">
             {{!-- <label for="gender">Gender</label> --}}
@@ -51,6 +51,25 @@
             <button type="submit" class="submitBtn">SignUp</button>
         </div>
     </form>
+    <script>
+        function myFunc(){
+            const passwordMainDiv = document.querySelector("#passwordDiv");
+            const passwordBox = document.querySelector("input[type='password']");
+            if(passwordBox.value.length < 6){
+                let p1 = document.createElement("p");
+                let text = document.createTextNode("Password must be minimum of 6 character");
+                p1.appendChild(text);
+                p1.setAttribute("id", "shortPassMsg")
+                passwordMainDiv.insertAdjacentElement("afterend", p1);
+            }
+            if(document.getElementById("shortPassMsg") && passwordBox.value.length >= 6){
+                document.getElementById("shortPassMsg").remove();
+            }
+        }
+    </script>
+            {{!-- if(document.getElementById("pass")){
+                document.getElementById("pass").remove();
+            } --}}
 </body>
 
 </html>

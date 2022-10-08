@@ -214,3 +214,10 @@ select.decorated option:hover {
 .loginRedirectLink a:focus {
     color: rgb(63, 62, 62);
 }
+
+#shortPassMsg {
+    display: block;
+    font-size: 0.8rem;
+    color: red;
+    margin: 0 ;
+}

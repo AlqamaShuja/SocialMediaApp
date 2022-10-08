@@ -22,6 +22,16 @@ const postSchema = new mongoose.Schema({
             required: true
         }
     }],
+    comments: [{
+        comment: {
+            type: String,
+            required: true
+        },
+        commentBy: {
+            type: mongoose.Schema.Types.ObjectId,
+            required: true
+        }
+    }]
 }, { timestamps: true });
 
 postSchema.virtual("users", {

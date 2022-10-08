@@ -7,6 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/css/form.css">
     <title>User Login</title>
+    <style>
+        .form-div textarea {
+            white-space: pre-wrap;
+        }
+    </style>
 </head>
 
 <body>
@@ -14,7 +19,7 @@
     <form action="/posts" method="post" class="form-login">
         <div class="form-div"><h1 class="user-login-text">New Post</h1></div>
         <div class="form-div">
-            <textarea type="text" name="title" autofocus 
+            <textarea type="text" name="title" autofocus  required
                 class="inputBox postBox" cols="10" placeholder="Type here"></textarea>
         </div>
         <div class="form-div">
