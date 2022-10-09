@@ -31,13 +31,13 @@ route.post("/posts", auth, async (req, res) => {
 });
 
 // Update Post
-route.patch("/posts/:id", auth, async (req, res) => { 
+route.patch("/posts/:id", auth, async (req, res) => {
     try {
         const post = await Post.findById(req.params.id);
         if (!post) return;
         post.title = req.body.title;
         await post.save();
-        
+
         res.redirect("/users/mypost");
     } catch (error) {
         res.send(error);
@@ -84,16 +84,13 @@ route.get("/users/posts/:ownerId/:postId", auth, async (req, res) => {
 route.get("/users/me/post/comment/:id", auth, async (req, res) => {
     try {
         const post = await Post.findById(req.params.id);
-        if(!post) return res.redirect("/users/me");
-        // res.render("postComment", {
-        //     name: req.user.name,
-        //     data: post
-        // });
-        res.send(post);
+        if (!post) return res.redirect("/users/me");
+        res.send({ post, currentUser: req.user._id });
     } catch (error) {
         res.redirect("/users/me");
     }
 });
+
 
 
 
@@ -133,7 +130,7 @@ route.get("/users/mypost", auth, (req, res) => {
 });
 
 // Read All Post
-route.get("/users/me/post", auth, async (req, res) => { 
+route.get("/users/me/post", auth, async (req, res) => {
     try {
         await req.user.populate({
             path: "posts",
@@ -143,20 +140,6 @@ route.get("/users/me/post", auth, async (req, res) => {
                 }
             }
         });
-        // console.log(req.user.posts);
-        // await req.user.posts.populate({
-        //     path: "users"
-        // });
-
-        // let data = await Post.find().populate("users");
-        // await Post.find({}).populate("users").exec(function (err, data) {
-        //     console.log(data);
-        // });
-        // console.log(req.user);
-        // const user = await User.findById(req.user.po);
-        // await Post.find().populate("users");
-
-        // res.send(req.user.posts);
         res.send(req.user.posts);
 
     } catch (error) {
@@ -168,7 +151,7 @@ route.get("/users/me/post", auth, async (req, res) => {
 route.get("/users/me/post/comment", auth, async (req, res) => {
     try {
         const post = await Post.findById(req.query.id);
-        if(!post) return res.redirect("/users/me");
+        if (!post) return res.redirect("/users/me");
         res.render("postComment", {
             name: req.user.name,
             id: post._id

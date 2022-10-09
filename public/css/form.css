@@ -219,5 +219,93 @@ select.decorated option:hover {
     display: block;
     font-size: 0.8rem;
     color: red;
-    margin: 0 ;
+    margin: 0;
 }
+
+
+/* .form-div-comment {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    width: 50%;
+} */
+
+.comment-form {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    width: 50%;
+    position: fixed;
+    bottom: -7px;
+}
+
+.comment-form form {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.comment-form form textarea {
+    width: 80%;
+    font-size: 1.2rem;
+    resize: none;
+    height: 47px;
+    /* margin-right: 1px; */
+    overflow-y: hidden;
+    white-space: pre-wrap;
+}
+
+.comment-form input {
+    width: 20%;
+    font-size: 1.2rem;
+    resize: none;
+    height: 47px;
+    border: 1px solid rgb(38, 36, 36);
+    background-color: rgb(46, 43, 43);
+    color: #fff;
+    /* border-radius: 5px; */
+}
+
+.comment-form input:hover {
+    background-color: rgb(15, 14, 14);
+    cursor: pointer;
+}
+
+.commentTextArea {
+    margin-left: 0;
+    box-sizing: border-box;
+    /* height: 100px; */
+}
+
+@media screen and (max-width: 600px) {
+    .comment-form form {
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: flex-start;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .comment-form form textarea {
+        margin-bottom: 0;
+        width: 100%;
+    }
+
+    .comment-form form input {
+        width: 100%;
+    }
+}
+
+/* @media screen and (max-width: 1024px) {
+    .comment-form textarea {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .comment-form .inputBox {
+        width: 50%;
+    }
+} */

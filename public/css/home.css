@@ -101,6 +101,7 @@ body {
     /* justify-content: space-between; */
     align-items: center;
 }
+
 .icon-update-delete .fa {
     margin-right: 25px;
     font-size: 1.2rem;
@@ -132,9 +133,62 @@ body {
     color: var(--baseColorGold);
 }
 
-.singlePostWithComment {
+#singlePostWithComment {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.commentContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+
+.commentBoxAll {
+    background-color: rgb(78, 77, 77);
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.commentBoxSingle {
+    background-color: rgb(123, 121, 121);
+    padding: 5px 10px;
+    margin: 4px 0px;
+    width: 50%;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.comment-heading-div {
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.comment-heading {
+    color: rgb(50, 49, 49);
+}
+
+@media screen and (max-width: 600px) {
+    .commentContainer {
+        margin-bottom: 90px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .commentBoxAll {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1600px) {
+    .commentBoxAll {
+        width: 50%;
+    }
 }

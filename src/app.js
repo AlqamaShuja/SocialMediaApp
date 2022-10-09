@@ -5,7 +5,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const hbs = require("hbs");
-const methodOverride = require("method-override"); 
+const methodOverride = require("method-override");
 // const socketio = require("socket.io"); 
 
 
@@ -14,6 +14,7 @@ const app = express();
 // const io = socketio(server);
 const userRoute = require("./Router/user");
 const postRoute = require("./Router/post");
+const commentRoute = require("./Router/comment");
 const pathToPublic = path.join(__dirname, "../public");
 
 
@@ -27,12 +28,13 @@ app.use(express.static(pathToPublic));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(methodOverride("_method")); 
+app.use(methodOverride("_method"));
 
 
 // Routes Middleware
 app.use(userRoute);
 app.use(postRoute);
+app.use(commentRoute);
 
 
 // io.on("connection", (socket) => {
