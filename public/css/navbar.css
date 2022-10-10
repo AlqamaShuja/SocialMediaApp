@@ -1,5 +1,6 @@
 :root {
     --navColor: rgb(17, 13, 13);
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .nav {
@@ -65,6 +66,11 @@
     justify-content: center;
     /* position: relative; */
     /* top: 1.5rem; */
+}
+
+.user-name a {
+    display: flex;
+    justify-content: center;
 }
 
 .dropMenu {

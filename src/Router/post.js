@@ -3,6 +3,7 @@ const Post = require("../models/post");
 const auth = require("../middleware/auth");
 const User = require("../models/user");
 const Comment = require("../models/comments");
+// const deletePostAndRelatedComment = require("../middleware/delPost_Comment");
 
 
 
@@ -43,6 +44,8 @@ route.patch("/posts/:id", auth, async (req, res) => {
         res.send(error);
     }
 });
+
+
 
 // Delete Post
 route.delete("/posts/:id", auth, async (req, res) => {
@@ -98,7 +101,7 @@ route.get("/users/me/post/comment/:id", auth, async (req, res) => {
 // HBS
 route.get("/users/newpost", auth, async (req, res) => {
     res.render("newPost", {
-        name: req.user.name
+        name: req.user.name.split(" ")[0]
     });
 });
 
@@ -124,7 +127,7 @@ route.get("/users/updatepost", auth, async (req, res) => {
 // Read Current User Post
 route.get("/users/mypost", auth, (req, res) => {
     res.render("mypost", {
-        name: req.user.name
+        name: req.user.name.split(" ")[0]
     });
 });
 

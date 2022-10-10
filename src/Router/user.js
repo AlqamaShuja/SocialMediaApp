@@ -1,13 +1,14 @@
 const route = require("express").Router();
 const auth = require("../middleware/auth");
 const User = require("../models/user");
+const Post = require("../models/post");
 
 
 
 route.get("/users/me", auth, (req, res) => {
     try {
         return res.render("index", {
-            name: req.user.name,
+            name: req.user.name.split(" ")[0],
             email: req.user.email
         });
     } catch (error) {
@@ -79,6 +80,10 @@ route.patch("/users/me", auth, async (req, res) => {
     }
 });
 
+// route.delete("/users/me", auth, (req, res) => {
+//     // Post.deleteMany({ owner: req.user._id });
+// })
+
 route.post("/users/login", async (req, res) => {
     try {
         const user = await User.findByCredentials(req.body.email, req.body.password);
@@ -144,7 +149,8 @@ route.get("/", auth, (req, res) => {
     } catch (error) {
         res.redirect("users/login");
     }
-})
+});
+
 
 
 module.exports = route;
