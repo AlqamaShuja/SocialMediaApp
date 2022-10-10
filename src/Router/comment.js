@@ -39,7 +39,7 @@ route.get("/users/me/post/comments/:postId", auth, async (req, res) => {
                 }
             }
         ]);
-        res.send(data);
+        res.send({ comments: data, currentUser: req.user._id });
     } catch (error) {
         res.send(error);
     }
@@ -52,7 +52,18 @@ route.get("/users/posts/comment/count/:postId", async (req, res) => {
     } catch (error) {
         res.send({ error: "Something went wrong" });
     }
-})
+});
+
+
+// Delete Comment by Id
+route.delete("/users/me/post/:postId/delcomments/:commentId", async (req, res) => {
+    try {
+        await Comment.deleteOne({ _id: req.params.commentId });
+        res.redirect(`/users/me/post/comment?id=${req.params.postId}`);
+    } catch (error) {
+        res.redirect(`/users/me/post/comment?id=${req.params.postId}`);
+    }
+});
 
 
 module.exports = route;

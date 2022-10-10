@@ -95,7 +95,8 @@ body {
     justify-content: center; */
 }
 
-.submitBtn:hover, .submitBtn:focus {
+.submitBtn:hover,
+.submitBtn:focus {
     background-color: var(--btnPrimaryHoverColor);
     font-weight: bold;
     cursor: pointer;
@@ -144,6 +145,10 @@ select.decorated option:hover {
     .error-message-login {
         width: 90%;
     }
+
+    .form-div {
+        width: 90%;
+    }
 }
 
 @media screen and (min-width: 768px) {
@@ -157,7 +162,9 @@ select.decorated option:hover {
         width: 50%;
     }
 
-
+    .form-div {
+        width: 60%;
+    }
 }
 
 @media screen and (min-width: 375px) and (max-width: 768px) {
@@ -167,6 +174,10 @@ select.decorated option:hover {
 
     .error-message-login {
         width: 50%;
+    }
+
+    .form-div {
+        width: 70%;
     }
 }
 
@@ -267,7 +278,8 @@ select.decorated option:hover {
     border-radius: 3px;
 }
 
-.comment-form input:hover, .comment-form input:focus {
+.comment-form input:hover,
+.comment-form input:focus {
     background-color: rgb(15, 14, 14);
     cursor: pointer;
 }

@@ -17,10 +17,12 @@
 <body>
     {{>header}}
     <form action="/posts" method="post" class="form-login">
-        <div class="form-div"><h1 class="user-login-text">New Post</h1></div>
         <div class="form-div">
-            <textarea type="text" name="title" autofocus  required
-                class="inputBox postBox" cols="10" placeholder="Type here"></textarea>
+            <h1 class="user-login-text">New Post</h1>
+        </div>
+        <div class="form-div">
+            <textarea type="text" id="postTextArea" name="title" autofocus required class="inputBox postBox" cols="10"
+                placeholder="Type here"></textarea>
         </div>
         <div class="form-div">
             <button type="submit" class="submitBtn">Uplaod</button>

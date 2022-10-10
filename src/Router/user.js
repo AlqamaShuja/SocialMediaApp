@@ -138,7 +138,13 @@ route.get("/users/update", auth, (req, res) => {
     });
 });
 
-
+route.get("/", auth, (req, res) => {
+    try {
+        res.redirect("/users/me");
+    } catch (error) {
+        res.redirect("users/login");
+    }
+})
 
 
 module.exports = route;

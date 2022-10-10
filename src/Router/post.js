@@ -2,6 +2,7 @@ const route = require("express").Router();
 const Post = require("../models/post");
 const auth = require("../middleware/auth");
 const User = require("../models/user");
+const Comment = require("../models/comments");
 
 
 
@@ -15,7 +16,6 @@ route.get("/users/posts", auth, async (req, res) => {
 // Creting new Post
 route.post("/posts", auth, async (req, res) => {
     try {
-        console.log(req.body.title);
         const post = new Post({
             title: req.body.title,
             owner: req.user._id,
@@ -50,6 +50,7 @@ route.delete("/posts/:id", auth, async (req, res) => {
         const post = await Post.findById(req.params.id);
         if (!post) return;
         await post.remove();
+        await Comment.deleteMany({ postOnComment: req.params.id });
         res.send({ success: true });
     } catch (error) {
         res.send({ success: false });
@@ -111,14 +112,12 @@ route.get("/users/updatepost", auth, async (req, res) => {
         if (post) {
             data.id = req.query.id;
             data.title = post.title
-            console.log(data);
             return res.render("postUpdate", data);
         }
         else {
             return res.render("newPost", data);
         }
     }
-    console.log(data);
     res.render("newPost", data);
 });
 

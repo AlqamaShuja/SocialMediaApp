@@ -103,7 +103,7 @@ body {
 }
 
 .icon-update-delete .fa {
-    margin-right: 25px;
+    margin-right: 15px;
     font-size: 1.2rem;
     color: var(--baseColorWhite);
     transition: transform 0.2s;
@@ -181,9 +181,51 @@ body {
     font-size: 1.2rem;
 }
 
+.postUserName_Delete {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.postUserName_Delete .fa {
+    color: #fff;
+    font-size: 1.3rem;
+}
+
+.postUserName_Delete .fa:hover {
+    animation-name: rotateBothSide;
+    animation-duration: 1s;
+    cursor: pointer;
+    color: red;
+}
+
+@keyframes rotateBothSide {
+    0% {
+        transform: rotate(0deg) scale(1.3);
+    }
+
+    30% {
+        transform: rotate(-45deg) scale(1.3);
+    }
+
+    70% {
+        transform: rotate(45deg) scale(1.3);
+    }
+
+    100% {
+        transform: rotate(0deg) scale(1.3);
+    }
+}
+
+
+
 @media screen and (max-width: 600px) {
     .commentContainer {
         margin-bottom: 90px;
+    }
+
+    .container {
+        width: 90%;
     }
 }
 

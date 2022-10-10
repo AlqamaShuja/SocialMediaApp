@@ -5,12 +5,12 @@ function updatePost(id) {
     location.href = `http://localhost:3000/users/updatepost?id=${id}`;
 }
 
-function deletePost(id){
+function deletePost(id) {
     fetch(`http://localhost:3000/posts/${id}?_method=DELETE`, { method: 'DELETE' })
-    .then(data => {
-        // console.log(data);
-        location.href = `http://localhost:3000/users/mypost`;
-    });
+        .then(data => {
+            // console.log(data);
+            location.href = `http://localhost:3000/users/mypost`;
+        });
 }
 
 
@@ -38,7 +38,9 @@ fetch("http://localhost:3000/users/me/post")
                         <span class='likeCount'>${data.likeBy.length}</span>
                     </p>
                     <div class='commentBox'>
-                        <a href='/users/me/post/comment?id=${data._id}' class='comment'>Comments<span id=${data._id}> 0</span></a>
+                        <a href='/users/me/post/comment?id=${data._id}' class='comment'>
+                        Comments <span id=${data._id}>0</span>
+                        </a>
                     </div>
                 </div>
                 </div>`;

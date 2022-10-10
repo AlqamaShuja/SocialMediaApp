@@ -2,20 +2,23 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <header>
     <nav class="nav">
-        <div class="logo">LOGO</div>
+        <div class="logo">
+            {{!-- <img src="/images/logo.png" alt="Logo" width="130px"> --}}
+            AlqaMedia
+        </div>
         <ul class="nav-lists">
             <li class="nav-list-item active" onclick="goTo(this)"><a href="/users/me">Home</a></li>
             <li class="nav-list-item user-name">
-                <a href="#">New</a>
+                <a href="#">Posts</a>
                 <div class="dropMenu" onclick="goTo(this)">
                     <a href="/users/newpost">New Post</a>
                 </div>
-                <div class="dropMenu findFirend">
-                    <a href="#">Find Friend</a>
-                </div>
-                <div class="dropMenu logout" onclick="goTo(this)">
+                <div class="dropMenu findFirend" onclick="goTo(this)">
                     <a href="/users/mypost">My Post</a>
                 </div>
+                {{!-- <div class="dropMenu logout" onclick="goTo(this)">
+                    <a href="/users/mypost">My Post</a>
+                </div> --}}
                 {{!-- <div class="dropMenu logoutAll">
                     <a href="/users/logoutAll">Logout All</a>
                 </div> --}}
@@ -42,12 +45,12 @@
         </div>
     </nav>
 
-    <div class="nav-side-box">
+    <div class="nav-side-box" style="z-index: 999;">
         <p class="cross-nav">
             <i class="fa fa-times cross-nav-sign" style="color: #fff; font-size:28px" aria-hidden="true"></i>
         </p>
         <div class="nav-side_item" onclick="goTo(this)">
-            <a href="/users/mypost">{{name}}</a>
+            <a href="/users/mypost">{{name}} (My Posts)</a>
         </div>
         <div class="nav-side_item" onclick="goTo(this)">
             <a href="/users/me">Home</a>
@@ -55,20 +58,20 @@
         <div class="nav-side_item" onclick="goTo(this)">
             <a href="/users/newpost">New Post</a>
         </div>
-        <div class="nav-side_item" onclick="goTo(this)">
+        {{!-- <div class="nav-side_item" onclick="goTo(this)">
             <a href="#">Find Friend</a>
+        </div> --}}
+        <div class="nav-side_item" onclick="goTo(this)">
+            <a href="/users/update">Update your Info</a>
         </div>
         <div class="nav-side_item" onclick="goTo(this)">
-            <a href="/users/update">Update Info</a>
-        </div>
-        <div class="nav-side_item" onclick="goTo(this)">
-            <a href="/users/delete">Delete Account</a>
+            <a href="/users/delete">Delete your Account</a>
         </div>
         <div class="nav-side_item" onclick="goTo(this)">
             <a href="/users/logout">Logout</a>
         </div>
         <div class="nav-side_item" onclick="goTo(this)">
-            <a href="/users/logoutAll">Logout All</a>
+            <a href="/users/logoutAll">Logout from all devices</a>
         </div>
     </div>
 </header>

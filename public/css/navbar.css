@@ -82,7 +82,8 @@
     font-size: 1rem;
 }
 
-.deleteAccount, .findFirend {
+.deleteAccount,
+.findFirend {
     top: 7rem;
 }
 
@@ -148,6 +149,7 @@
     background-color: rgb(33, 31, 31);
     padding: 14px 12px;
     border-bottom: 2px solid rgb(71, 71, 71);
+    cursor: pointer;
 }
 
 .nav-side_item a {
