@@ -43,6 +43,15 @@ route.get("/users/me/post/comments/:postId", auth, async (req, res) => {
     } catch (error) {
         res.send(error);
     }
+});
+
+route.get("/users/posts/comment/count/:postId", async (req, res) => {
+    try {
+        const commentCount = await Comment.find({ postOnComment: req.params.postId }).count();
+        res.send({ count: commentCount });
+    } catch (error) {
+        res.send({ error: "Something went wrong" });
+    }
 })
 
 

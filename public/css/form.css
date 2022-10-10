@@ -95,7 +95,7 @@ body {
     justify-content: center; */
 }
 
-.submitBtn:hover {
+.submitBtn:hover, .submitBtn:focus {
     background-color: var(--btnPrimaryHoverColor);
     font-weight: bold;
     cursor: pointer;
@@ -236,7 +236,7 @@ select.decorated option:hover {
     align-items: center;
     width: 50%;
     position: fixed;
-    bottom: -7px;
+    bottom: -5px;
 }
 
 .comment-form form {
@@ -251,7 +251,7 @@ select.decorated option:hover {
     font-size: 1.2rem;
     resize: none;
     height: 47px;
-    /* margin-right: 1px; */
+    margin-right: 1px;
     overflow-y: hidden;
     white-space: pre-wrap;
 }
@@ -264,10 +264,10 @@ select.decorated option:hover {
     border: 1px solid rgb(38, 36, 36);
     background-color: rgb(46, 43, 43);
     color: #fff;
-    /* border-radius: 5px; */
+    border-radius: 3px;
 }
 
-.comment-form input:hover {
+.comment-form input:hover, .comment-form input:focus {
     background-color: rgb(15, 14, 14);
     cursor: pointer;
 }

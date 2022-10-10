@@ -20,6 +20,7 @@ fetch("http://localhost:3000/users/me/post")
     .then(postData => {
         if (postData.length == 0) throw new Error();
         postData.forEach(data => {
+            commentCount(data._id);
             output += `<div class="container">
             <div class="postUpdate">
                 <h3 class='ownerName ownerNameAnim'>${capitalizeFirst(data.ownerName)}</h3>
@@ -36,6 +37,9 @@ fetch("http://localhost:3000/users/me/post")
                         <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
                         <span class='likeCount'>${data.likeBy.length}</span>
                     </p>
+                    <div class='commentBox'>
+                        <a href='/users/me/post/comment?id=${data._id}' class='comment'>Comments<span id=${data._id}> 0</span></a>
+                    </div>
                 </div>
                 </div>`;
         });

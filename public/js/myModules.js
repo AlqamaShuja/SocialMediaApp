@@ -30,3 +30,12 @@ function likeButtonStyle(allLiker, currentUser) {
     if (liked) return '<i class="fa fa-thumbs-up" aria-hidden="true"></i>';
     return '<i class="fa fa-thumbs-o-up" aria-hidden="true"></i>'
 }
+
+
+function commentCount(id){
+    fetch(`http://localhost:3000/users/posts/comment/count/${id}`)
+    .then(count => count.json())
+    .then(count => {
+        document.getElementById(id).innerHTML = count.count
+    });
+}

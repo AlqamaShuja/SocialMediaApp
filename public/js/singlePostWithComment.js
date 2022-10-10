@@ -4,7 +4,7 @@ const id = location.href.split("=")[1];
 let commentData = `
     <div class='comment-form'>
         <form action='/users/me/post/addcomment/${id}' method='post'>
-            <textarea class="inputBox commentTextArea" type='text' name='commentBody' placeholder='Comment here'></textarea>
+            <textarea class="inputBox commentTextArea" autofocus type='text' name='commentBody' placeholder='Comment here'></textarea>
             <input type='submit' value='Send'/>
         </form>
     </div>`;
