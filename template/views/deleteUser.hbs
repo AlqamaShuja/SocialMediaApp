@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/form.css">
+    <title>Delete User Account</title>
+    <script>
+        function goToUserPage(){
+            location.href = "/users/me";
+        }
+    </script>
+</head>
+
+<body>
+    <form action="/users/me?_method=DELETE" method="post" _method="DELETE" class="form-login">
+        <div class="form-div">
+            <h1 class="user-login-text">Delete Your Account</h1>
+        </div>
+        <div class="form-div">
+            {{!-- <label for="emailLogin">Email address</label> --}}
+            <input type="text" name="email" class="inputBox email" readonly
+                id="emailLogin" placeholder="Are you sure to delete your Account.?">
+        </div>
+        <div class="form-div user_delete">
+            <button type="submit" style="margin-right: 5px" class="submitBtn delete_cancel_btn">Delete</button>
+            <button class="submitBtn delete_cancel_btn" onclick="goToUserPage()">Cancel</button>
+        </div>
+    </form>
+
+</body>
+
+</html>

@@ -2,7 +2,7 @@ const route = require("express").Router();
 const auth = require("../middleware/auth");
 const User = require("../models/user");
 const Post = require("../models/post");
-
+const Comment = require("../models/comments");
 
 
 route.get("/users/me", auth, (req, res) => {
@@ -80,9 +80,17 @@ route.patch("/users/me", auth, async (req, res) => {
     }
 });
 
-// route.delete("/users/me", auth, (req, res) => {
-//     // Post.deleteMany({ owner: req.user._id });
-// })
+route.delete("/users/me", auth, async (req, res) => {
+    // Post.deleteMany({ owner: req.user._id });
+    const posts = await Post.find({ owner: req.user._id });
+    // console.log(posts);
+    posts.map(async (post) => {
+        await Comment.deleteMany({ postOnComment: post._id });
+        await Post.deleteOne({ _id: post._id });
+    });
+    await req.user.remove();
+    res.redirect("/users/login");
+})
 
 route.post("/users/login", async (req, res) => {
     try {
@@ -151,6 +159,9 @@ route.get("/", auth, (req, res) => {
     }
 });
 
+route.get("/users/delete", auth, (req, res) => {
+    res.render("deleteUser");
+});
 
 
 module.exports = route;

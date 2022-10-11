@@ -181,6 +181,19 @@ select.decorated option:hover {
     }
 }
 
+@media screen and (min-width: 370px) and (max-width: 377px) {
+    .user-login-text {
+        font-size: 1.3rem;
+    }
+}
+
+@media screen and (min-width: 373px) and (max-width: 446px) {
+    .user-login-text {
+        font-size: 1.7rem;
+    }
+}
+
+
 @media screen and (min-width: 768px) and (max-width: 1024px) {
     .inputBox {
         width: 50%;
@@ -192,6 +205,10 @@ select.decorated option:hover {
 
     .submitBtn {
         width: 55%;
+    }
+
+    .delete_cancel_btn {
+        width: 10%;
     }
 }
 
@@ -309,6 +326,40 @@ select.decorated option:hover {
         width: 100%;
     }
 }
+
+.user_delete {
+    box-sizing: border-box;
+}
+
+.delete_cancel_btn {
+    width: 50%;
+    margin-left: 2px;
+}
+
+@media screen and (min-width: 1024px) {
+    .user_delete {
+        width: 44%;
+        /* display: flex;
+        justify-content: center; */
+    }
+    .delete_cancel_btn {
+        width: 50%;
+        margin: 0;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .user_delete {
+        width: 33%;
+        display: flex;
+        justify-content: center;
+    }
+    .delete_cancel_btn {
+        width: 50%;
+        margin: 0;
+    }
+}
+
 
 /* @media screen and (max-width: 1024px) {
     .comment-form textarea {

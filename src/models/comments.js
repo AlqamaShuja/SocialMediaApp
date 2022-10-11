@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 
-const commentSchema = new mongoose.Schema({
+const commentSchema = new mongoose.Schema({ 
     commentBody: {
         type: String,
         required: true
