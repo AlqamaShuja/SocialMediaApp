@@ -2,20 +2,20 @@
 let output = "";
 
 function updatePost(id) {
-    location.href = `http://localhost:3000/users/updatepost?id=${id}`;
+    location.href = `/users/updatepost?id=${id}`;
 }
 
 function deletePost(id) {
-    fetch(`http://localhost:3000/posts/${id}?_method=DELETE`, { method: 'DELETE' })
+    fetch(`/posts/${id}?_method=DELETE`, { method: 'DELETE' })
         .then(data => {
             // console.log(data);
-            location.href = `http://localhost:3000/users/mypost`;
+            location.href = `/users/mypost`;
         });
 }
 
 
 
-fetch("http://localhost:3000/users/me/post")
+fetch("/users/me/post")
     .then(postData => postData.json())
     .then(postData => {
         if (postData.length == 0) throw new Error();

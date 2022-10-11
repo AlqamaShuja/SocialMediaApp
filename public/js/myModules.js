@@ -1,7 +1,7 @@
 function likeOrDislike(e) {
     let ownerId = e.getAttribute("data-owner-id");
     let postId = e.getAttribute("data-post-id");
-    fetch(`http://localhost:3000/users/posts/${ownerId}/${postId}`)
+    fetch(`/users/posts/${ownerId}/${postId}`)
         .then(count => count.json())
         .then(count => {
             e.children[1].innerHTML = count.like;
@@ -32,10 +32,10 @@ function likeButtonStyle(allLiker, currentUser) {
 }
 
 
-function commentCount(id){
-    fetch(`http://localhost:3000/users/posts/comment/count/${id}`)
-    .then(count => count.json())
-    .then(count => {
-        document.getElementById(id).innerHTML = count.count
-    });
+function commentCount(id) {
+    fetch(`/users/posts/comment/count/${id}`)
+        .then(count => count.json())
+        .then(count => {
+            document.getElementById(id).innerHTML = count.count
+        });
 }

@@ -12,9 +12,9 @@ let commentData = `
 
 // /users/me/post/:postId/delcomments/:commentId
 function deleteComment(commentId) {
-    fetch(`http://localhost:3000/users/me/post/${id}/delcomments/${commentId}?_method=DELETE`, { method: 'POST' })
+    fetch(`/users/me/post/${id}/delcomments/${commentId}?_method=DELETE`, { method: 'POST' })
         .then(() => {
-            location.href = `http://localhost:3000/users/me/post/comment?id=${id}`
+            location.href = `/users/me/post/comment?id=${id}`
             console.log("comment deleted");
         })
 }
@@ -28,7 +28,7 @@ function deleteButtonForCurrUser(currentUser, commentBy, commId) {
 }
 
 function getAllCommentInHTML(id) {
-    fetch(`http://localhost:3000/users/me/post/comments/${id}`)
+    fetch(`/users/me/post/comments/${id}`)
         .then(dataJSON => dataJSON.json())
         .then(commentsData => {
             // comments = comments.reverse();
@@ -49,7 +49,7 @@ function getAllCommentInHTML(id) {
 }
 
 
-fetch(`http://localhost:3000/users/me/post/comment/${id}`)
+fetch(`/users/me/post/comment/${id}`)
     .then(data => data.json())
     .then(dataAll => {
         const data = dataAll["post"];
@@ -75,19 +75,7 @@ fetch(`http://localhost:3000/users/me/post/comment/${id}`)
             
         </div>
         `;
-        // <div class='commentBoxAll'>
-        //     ${getAllCommentInHTML(data.comments)}
-        // <div>
-        // <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
     });
-
-
-
-
-{/* <div class='icon-update-delete'>
-    <i class="fa fa-trash" aria-hidden="true" onclick='deletePost("${data._id}")'></i>
-    <p class="" onclick=updatePost("${data._id}")><i class="fa fa-pencil-square" aria-hidden="true"></i></p>
-</div> */}
 
 
 

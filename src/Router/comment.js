@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const auth = require("../middleware/auth");
 const Comment = require("../models/comments");
-// const Post = require("../models/post");
 const User = require("../models/user");
 const route = require("express").Router();
 

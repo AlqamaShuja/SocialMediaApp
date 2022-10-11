@@ -18,7 +18,7 @@ function goTo(e) {
 nav_toggle.addEventListener("click", toggleNav);
 document.querySelector(".cross-nav-sign").addEventListener("click", toggleNav);
 
-if (location.href != "http://localhost:3000/users/me") {
+if (!location.href.includes("/users/me")) {
     let home = document.querySelector(".nav-lists").children[0];
     home.classList.remove("active");
     // console.log(ulists);
