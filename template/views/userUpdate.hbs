@@ -11,45 +11,24 @@
 
 <body>
     {{>header}}
-    {{!-- enctype="application/x-www-form-urlencoded" --}}
-        {{!-- <input type="hidden" name="_id" value="{{id}}"> --}}
-    {{!-- <form action="/users/me?_method=PATCH" method="post" _method="Patch">
-        <div class="inputBox">
-            <label for="name">Name</label>
-            <input type="text" id="name" class="input" name="name" value="{{name}}">
-        </div>
-        <div class="inputBox">
-            <label for="email">Email</label>
-            <input type="text" id="email" class="input" name="email" value="{{email}}">
-        </div>
-        <div class="inputBox">
-            <label for="password">Password</label>
-            <input type="password" id="password" class="input" name="password">
-        </div>
-        <div class="inputBox">
-            <label>Gender &nbsp;</label>
-            <input type="radio" id="male" class="input" name="gender" value="1">
-            <label for="male">Male</label>
-            <input type="radio" id="female" class="input" name="gender" value="-1">
-            <label for="female">Female</label>
-        </div>
-        <input type="submit" value="Update">
-    </form> --}}
-
     <form action="/users/me?_method=PATCH" method="post" _method="Patch" class="form-login">
-        <div class="form-div"><h1 class="user-login-text">Update User</h1></div>
         <div class="form-div">
-            <input type="text" name="name" autofocus value="{{name}}" class="inputBox" placeholder="Enter Name">
+            <h1 class="user-login-text">Update User</h1>
         </div>
         <div class="form-div">
-            <input type="email" name="email" class="inputBox" value="{{email}}" placeholder="Enter email">
+            <input type="text" name="name" autofocus value="{{name}}" class="inputBox" placeholder="Enter Name"
+                required>
         </div>
         <div class="form-div">
-            <input type="password" name="password" class="inputBox" placeholder="Password">
+            <input type="email" name="email" class="inputBox" value="{{email}}" placeholder="Enter email" required
+                readonly>
+        </div>
+        <div class="form-div">
+            <input type="password" name="password" class="inputBox" placeholder="Password" required>
         </div>
         <div class="form-div">
             {{!-- <label for="gender">Gender</label> --}}
-            <select name="gender" id="gender" class="genderBox">
+            <select name="gender" id="gender" class="genderBox" required>
                 <option class="gender_opt">Select Gender</option>
                 <option class="gender_opt" value="1" {{#if male}} selected {{/if}}>Male</option>
                 <option class="gender_opt" value="-1" {{#if female}} selected {{/if}}>Female</option>
