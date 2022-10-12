@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/css/form.css">
-    <title>User Login</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon-2.png">
+    <title>User SignUp</title>
 </head>
 
 <body>
@@ -35,7 +36,8 @@
             <input type="email" name="email" required class="inputBox" placeholder="Enter email">
         </div>
         <div class="form-div" id="passwordDiv">
-            <input type="password" onchange="myFunc()" minlength="6" name="password" required class="inputBox" placeholder="Password">
+            <input type="password" onchange="myFunc()" minlength="6" name="password" required class="inputBox"
+                placeholder="Password">
         </div>
         <div class="form-div">
             {{!-- <label for="gender">Gender</label> --}}
@@ -52,24 +54,24 @@
         </div>
     </form>
     <script>
-        function myFunc(){
+        function myFunc() {
             const passwordMainDiv = document.querySelector("#passwordDiv");
             const passwordBox = document.querySelector("input[type='password']");
-            if(passwordBox.value.length < 6){
+            if (passwordBox.value.length < 6) {
                 let p1 = document.createElement("p");
                 let text = document.createTextNode("Password must be minimum of 6 character");
                 p1.appendChild(text);
                 p1.setAttribute("id", "shortPassMsg")
                 passwordMainDiv.insertAdjacentElement("afterend", p1);
             }
-            if(document.getElementById("shortPassMsg") && passwordBox.value.length >= 6){
+            if (document.getElementById("shortPassMsg") && passwordBox.value.length >= 6) {
                 document.getElementById("shortPassMsg").remove();
             }
         }
     </script>
-            {{!-- if(document.getElementById("pass")){
-                document.getElementById("pass").remove();
-            } --}}
+    {{!-- if(document.getElementById("pass")){
+    document.getElementById("pass").remove();
+    } --}}
 </body>
 
 </html>

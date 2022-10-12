@@ -6,9 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/css/form.css">
+    <link rel="icon" type="image/x-icon" href="/images/favicon-3.png">
     <title>Delete User Account</title>
     <script>
-        function goToUserPage(){
+        function goToUserPage() {
             location.href = "/users/me";
         }
     </script>
@@ -21,8 +22,8 @@
         </div>
         <div class="form-div">
             {{!-- <label for="emailLogin">Email address</label> --}}
-            <input type="text" name="email" class="inputBox email" readonly
-                id="emailLogin" placeholder="Are you sure to delete your Account.?">
+            <input type="text" name="email" class="inputBox email" readonly id="emailLogin"
+                placeholder="Are you sure to delete your Account.?">
         </div>
         <div class="form-div user_delete">
             <button type="submit" style="margin-right: 5px" class="submitBtn delete_cancel_btn">Delete</button>
